@@ -1,58 +1,285 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+    export default {
+        data() {
+            return {
+                result:'0',
+                memoryValue: 0.0,
+                numLock: false,
+                number1: 0.0,
+                number2: 0.0,
+                numbers: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+                operationsBasic: ['+', '-', '*', '/']
+            }
+        },
+        methods: {
+            zeroClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '0'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '0'
+                }
+            },
+            oneClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '1'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '1'
+                }
+            },
+            twoClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '2'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '2'
+                }
+            },
+            threeClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '3'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '3'
+                }
+            },
+            fourClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '4'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '4'
+                }
+            },
+            fiveClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '5'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '5'
+                }
+            },
+            sixClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '6'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '6'
+                }
+            },
+            sevenClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '7'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '7'
+                }
+            },
+            eightClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '8'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '8'
+                }
+            },
+            nineClick() {
+                if(!this.result.startsWith('0'))
+                {
+                    this.result += '9'
+                }
+                else
+                {
+                    this.result = this.result.slice(1)
+                    this.result += '9'
+                }
+            },
+            mcClick() {
+                this.memoryValue = 0
+            },
+            mrClick() {
+                if(this.result.startsWith('0')) 
+                {
+                    this.result = this.result.slice(1)
+                    this.result = this.memoryValue
+                }
+                else 
+                {
+                    this.result = this.memoryValue
+                }
+            },
+            mplusClick() {
+                this.memoryValue += this.result
+            },
+            mminusClick() {
+                this.memoryValue -= this.result
+
+            },
+            percentClick() {
+
+            },
+            ceClick() {
+
+            },
+            symbolClick() {
+                this.result = this.result.slice(0, -1)
+            },
+            cClick() {
+                this.result = '0';
+            },
+            sinClick() {
+                this.result = Math.sin(this.result)
+            },
+            cosClick() {
+                this.result = Math.cos(this.result)
+            },
+            tgClick() {
+                this.result = Math.tan(this.result)
+            },
+            acrTgClick() {
+                this.result = Math.atan(this.result)
+            },
+            logClick() {
+                this.result = Math.log(this.result)
+            },
+            lnClick() {
+                this.result = Math.log10(this.result)
+            },
+            factorialClick() {
+
+            },
+            powClick() {
+
+            },
+            reverseClick() {
+                this.result = 1 / this.result
+            },
+            sqrClick() {
+                this.result = Math.pow(this.result, 2)
+            },
+            sqrtClick() {
+                this.result = Math.sqrt(this.result)
+            },
+            divideClick() {
+                this.result += '/'
+            },
+            multiplyClick() {
+                this.result += '*'
+            },
+            subtractClick() {
+                this.result += '-'
+            },
+            plusClick() {
+                this.result += '+'
+            },
+            expClick() {
+                this.result = Math.exp(this.result)
+            },
+            dotClick() {
+                this.result += '.'
+            },
+            equalClick() {
+
+            }
+        }
+    }
 </script>
 
 <template> 
     <div class="calcInterface">
         <div class="textbox">
-            <input type="number" placeholder="0">
+            <p>{{result}}</p>
         </div>
+        <div class="line"></div>
         <div class="buttons">
-            <button class="but">MC</button>
-            <button class="but">MR</button>
-            <button class="but">M+</button>
-            <button class="but">M-</button>
-            <button class="but">%</button>
-            <button class="but">CE</button>
-            <button class="but">C</button>
-            <button class="but" id="symbol"><img id="imgClear" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVR4nO2YQUoDQRBFn6BrQXBIQBeC4A1c5QoeQG+gC28QD+HOpUs14M6VpzCL5AAhIIoYQXAhtgi1aM0w6Wl7YqWtBw2BqWr606k/NQWGYRiGYfxvuoBTsF6Aa2AnRsQB8KFAhPPWE7BZR0QHeJPkY/6eFnAl57kMTdoGHiTpFD205UyTkOA1YCgJN8AyunCyKlkBbiWwD6yiDzdLyBJwLkHjugWlSciJBLwCu+jFVQnZF5t9B/YiNj8EioC4QmIbEdL5pc0eeTVVJaaQGCc5sZQK2QLu5cFZ5MbrwJ3sMRCLnBXz9U6IZUpISputEpNSxJSQJmy2TExqEd+E+DY7AjZIh18H/R+/Q8yglpBuwzbr30LKm1AhpMwAYsnvrzWvYm8FWrNq+/VrIrUYN68XYllhpxTjsm5Rsmoas2rjs/qwyuZTN6vhw6KMg54XeUDXBnpynoscRqaPsf2hliH2RG4iZZNrGIZhGAYa+AQu6kng3Jtj4AAAAABJRU5ErkJggg==" alt=""></button>
-            <button class="but">sin</button>
-            <button class="but">cos</button>
-            <button class="but">tg</button>
-            <button class="but">arctg</button>
-            <button class="but">log</button>
-            <button class="but">ln</button>
-            <button class="but">!</button>
-            <button class="but">xʸ</button>
-            <button class="but">¹/x</button>
-            <button class="but">x²</button>
-            <button class="but">²√x</button>
-            <button class="operation">÷</button>
-            <button class="but">7</button>
-            <button class="but">8</button>
-            <button class="but">9</button>
-            <button class="operation">×</button>
-            <button class="but">4</button>
-            <button class="but">5</button>
-            <button class="but">6</button>
-            <button class="operation">-</button>
-            <button class="but">1</button>
-            <button class="but">2</button>
-            <button class="but">3</button>
-            <button class="operation">+</button>
-            <button class="but">eˣ</button>
-            <button class="but">0</button>
-            <button class="but">,</button>
-            <button class="but" id="equal">=</button>
+            <button @click="mcClick" class="but">MC</button>
+            <button @click="mrClick" class="but">MR</button>
+            <button @click="mplusClick" class="but">M+</button>
+            <button @click="mminusClick" class="but">M-</button>
+            <button @click="percentClick" class="but">%</button>
+            <button @click="ceClick" class="but">CE</button>
+            <button @click="cClick" class="but">C</button>
+            <button @click="symbolClick" class="but" id="symbol"><img id="imgClear" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVR4nO2YQUoDQRBFn6BrQXBIQBeC4A1c5QoeQG+gC28QD+HOpUs14M6VpzCL5AAhIIoYQXAhtgi1aM0w6Wl7YqWtBw2BqWr606k/NQWGYRiGYfxvuoBTsF6Aa2AnRsQB8KFAhPPWE7BZR0QHeJPkY/6eFnAl57kMTdoGHiTpFD205UyTkOA1YCgJN8AyunCyKlkBbiWwD6yiDzdLyBJwLkHjugWlSciJBLwCu+jFVQnZF5t9B/YiNj8EioC4QmIbEdL5pc0eeTVVJaaQGCc5sZQK2QLu5cFZ5MbrwJ3sMRCLnBXz9U6IZUpISputEpNSxJSQJmy2TExqEd+E+DY7AjZIh18H/R+/Q8yglpBuwzbr30LKm1AhpMwAYsnvrzWvYm8FWrNq+/VrIrUYN68XYllhpxTjsm5Rsmoas2rjs/qwyuZTN6vhw6KMg54XeUDXBnpynoscRqaPsf2hliH2RG4iZZNrGIZhGAYa+AQu6kng3Jtj4AAAAABJRU5ErkJggg==" alt=""></button>
+            <button @click="sinClick" class="but">sin</button>
+            <button @click="cosClick" class="but">cos</button>
+            <button @click="tgClick" class="but">tg</button>
+            <button @click="acrTgClick" class="but">arctg</button>
+            <button @click="logClick" class="but">log</button>
+            <button @click="lnClick" class="but">ln</button>
+            <button @click="factorialClick" class="but">!</button>
+            <button @click="powClick" class="but">xʸ</button>
+            <button @click="reverseClick" class="but">¹/x</button>
+            <button @click="sqrClick" class="but">x²</button>
+            <button @click="sqrtClick" class="but">²√x</button>
+            <button @click="divideClick" class="operation">÷</button>
+            <button @click="sevenClick" class="but">7</button>
+            <button @click="eightClick" class="but">8</button>
+            <button @click="nineClick" class="but">9</button>
+            <button @click="multiplyClick" class="operation">×</button>
+            <button @click="fourClick" class="but">4</button>
+            <button @click="fiveClick" class="but">5</button>
+            <button @click="sixClick" class="but">6</button>
+            <button @click="subtractClick" class="operation">-</button>
+            <button @click="oneClick" class="but">1</button>
+            <button @click="twoClick" class="but">2</button>
+            <button @click="threeClick" class="but">3</button>
+            <button @click="plusClick" class="operation">+</button>
+            <button @click="expClick" class="but">eˣ</button>
+            <button @click="zeroClick" class="but">0</button>
+            <button @click="dotClick" class="but">,</button>
+            <button @click="equalClick" class="but" id="equal">=</button>
             
         </div> 
     </div>
 </template>
 
 <style>
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
+    
+    .line {
+        border: 1px solid black;
+        margin-top: 5px;
+    }
+
+    .textbox p {
+        margin-top: 0;
+        width: 268px;
+        height: 50px;
+        text-align: right;
+        font-size: 40px;
+        padding-right: 5px;
+
+    }
+
+    .textbox p::-webkit-inner-spin-button,
+    .textbox p::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
@@ -69,21 +296,11 @@ import TheWelcome from './components/TheWelcome.vue'
         background-color: rgb(255, 187, 60);
         color: rgb(58, 57, 57);
     }
-    input[type="number"]  {
-        width: 268px;
-        height: 50px;
-        text-align: right;
-        font-size: 40px;
-        border-top: 0;
-        border-radius: 10px;
-        padding-right: 5px;
-        
-    }
-    
+
     .buttons {
+        margin-top: 5px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        margin-top: 1px;
         justify-items: center;
         user-select: none;
     }
