@@ -8,9 +8,9 @@
                 number1: 0.0,
                 number2: 0.0,
                 numbers: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-                operationsBasic: ['+', '-', '*', '/']
             }
         },
+
         methods: {
             zeroClick() {
                 if(!this.result.startsWith('0'))
@@ -23,6 +23,7 @@
                     this.result += '0'
                 }
             },
+
             oneClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -34,6 +35,7 @@
                     this.result += '1'
                 }
             },
+
             twoClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -45,6 +47,7 @@
                     this.result += '2'
                 }
             },
+
             threeClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -56,6 +59,7 @@
                     this.result += '3'
                 }
             },
+
             fourClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -67,6 +71,7 @@
                     this.result += '4'
                 }
             },
+
             fiveClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -78,6 +83,7 @@
                     this.result += '5'
                 }
             },
+
             sixClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -89,6 +95,7 @@
                     this.result += '6'
                 }
             },
+
             sevenClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -100,6 +107,7 @@
                     this.result += '7'
                 }
             },
+
             eightClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -111,6 +119,7 @@
                     this.result += '8'
                 }
             },
+
             nineClick() {
                 if(!this.result.startsWith('0'))
                 {
@@ -122,92 +131,181 @@
                     this.result += '9'
                 }
             },
+
             mcClick() {
                 this.memoryValue = 0
             },
+
             mrClick() {
-                if(this.result.startsWith('0')) 
-                {
-                    this.result = this.result.slice(1)
-                    this.result = this.memoryValue
-                }
-                else 
-                {
-                    this.result = this.memoryValue
-                }
+                this.result = Number(this.memoryValue)
             },
+
             mplusClick() {
                 this.memoryValue += this.result
             },
+
             mminusClick() {
                 this.memoryValue -= this.result
 
             },
+
             percentClick() {
-
+                if (this.result.includes('+') || this.result.includes('-') || this.result.includes('*') || this.result.includes('/') || this.result.includes('^')) {
+                    const numbersArray = this.result.split(/(\+|\-|\*|\/|\^)/);
+                    const number1 = Number(numbersArray[0]);
+                    const number2 = Number(numbersArray[2]);
+                    const operator = numbersArray[1];
+                    const percentNum = number1 * number2 / 100;
+                    this.result = number1.toString() + operator + percentNum.toString();
+                } 
+                else {
+                    this.result = '0';
+                }
             },
+
             ceClick() {
-
+                const operators = ['+', '-', '*', '/', '^'];
+                let operatorIndex = this.result.length;
+                if (this.result.includes('+') || this.result.includes('-') || this.result.includes('*') || this.result.includes('/') || this.result.includes('^')) {
+                    for (let i = this.result.length - 1; i >= 0; i--) {
+                        if (operators.includes(this.result[i])) {
+                            operatorIndex = i;
+                        break;
+                        }
+                    }
+                    this.result = this.result.substr(0, operatorIndex);
+                }
+                else {
+                    this.result = '0'
+                }
             },
+
             symbolClick() {
                 this.result = this.result.slice(0, -1)
+                if (this.result.length < 1)
+                {
+                    this.result += '0'
+                }
             },
+
             cClick() {
                 this.result = '0';
             },
+
             sinClick() {
                 this.result = Math.sin(this.result)
             },
+
+
             cosClick() {
                 this.result = Math.cos(this.result)
             },
+
             tgClick() {
                 this.result = Math.tan(this.result)
             },
+
             acrTgClick() {
                 this.result = Math.atan(this.result)
             },
+            
             logClick() {
                 this.result = Math.log(this.result)
             },
+
             lnClick() {
                 this.result = Math.log10(this.result)
             },
+
             factorialClick() {
+                const num = Number(this.result)
+                let factorial = 1
 
+                if (Number.isInteger(num) && num > 0) {
+                    for (let i = 1; i <= num; i++) {
+                        factorial *= i;
+                    }
+                    this.result = factorial.toString()
+                } 
             },
+
             powClick() {
-
+                this.result += '^'
             },
+
             reverseClick() {
                 this.result = 1 / this.result
             },
+
             sqrClick() {
                 this.result = Math.pow(this.result, 2)
             },
+
             sqrtClick() {
                 this.result = Math.sqrt(this.result)
             },
+
             divideClick() {
                 this.result += '/'
             },
+
             multiplyClick() {
                 this.result += '*'
             },
+
             subtractClick() {
                 this.result += '-'
             },
+
             plusClick() {
                 this.result += '+'
             },
+
             expClick() {
                 this.result = Math.exp(this.result)
             },
+
             dotClick() {
                 this.result += '.'
             },
-            equalClick() {
 
+            equalClick() {
+                    const numbersArray = this.result.split(/(\+|\-|\*|\/|\^)/)
+                    const number1 = Number(numbersArray[0]) //число 1
+                    const number2 = Number(numbersArray[2]) //число 2
+                    const operation = numbersArray[1] //оператор
+
+                    switch(operation) {
+                        case '+': {
+                            this.result = number1 + number2;
+                        }
+                        break;
+                        
+                        case '-': {
+                            this.result = number1 - number2;
+                        }
+                        break;
+
+                        case '*': {
+                            this.result = number1 * number2;
+                        }
+                        break;
+
+                        case '/': {
+                            this.result = number1 / number2;
+                        }
+                        break;
+
+                        case '^': {
+                            this.result = Math.pow(number1, number2);
+                        }
+                        break
+
+                        default: {
+                            return this.result;
+                        }
+                        break;
+                    }
             }
         }
     }
@@ -220,7 +318,7 @@
         </div>
         <div class="line"></div>
         <div class="buttons">
-            <button @click="mcClick" class="but">MC</button>
+            <button @click="mcClick"  class="but">MC</button>
             <button @click="mrClick" class="but">MR</button>
             <button @click="mplusClick" class="but">M+</button>
             <button @click="mminusClick" class="but">M-</button>
@@ -269,12 +367,13 @@
     }
 
     .textbox p {
-        margin-top: 0;
+        margin-top: 10px;
         width: 268px;
         height: 50px;
         text-align: right;
         font-size: 40px;
         padding-right: 5px;
+        font-size: 26px;
 
     }
 
@@ -364,5 +463,3 @@
         color: white;
     }
 </style>
-
-
