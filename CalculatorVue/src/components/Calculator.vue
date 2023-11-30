@@ -344,6 +344,7 @@
   </script>
   
   <style>
+    
     .line {
       border: 1px solid black;
       margin-top: 5px;
@@ -362,6 +363,8 @@
       border: 2px solid black;
       border-radius: 10px;
       align-items: center;
+      position: relative;
+      left: 50%;
     }
   
     ::selection {
@@ -371,7 +374,7 @@
   
     .buttons {
       margin-top: 5px;
-      display: grid;
+      display: grid; 
       grid-template-columns: repeat(4, 1fr);
       justify-items: center;
       user-select: none;
@@ -444,6 +447,7 @@
     }
   
     .symbol {
+        margin-bottom: 0;
         align-items: center;
     }
   
