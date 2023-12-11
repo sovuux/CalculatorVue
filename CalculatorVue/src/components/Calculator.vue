@@ -5,54 +5,53 @@
       </div>
       <div class="line"></div>
       <div class="buttons">
-        <ButtonsContainer
-          @mcClick="mcClick"
-          @mrClick="mrClick"
-          @mplusClick="mplusClick"
-          @mminusClick="mminusClick"
-          @percentClick="percentClick"
-          @ceClick="ceClick"
-          @cClick="cClick"
-          @symbolClick="symbolClick"
-          @sinClick="sinClick"
-          @cosClick="cosClick"
-          @tgClick="tgClick"
-          @arcTgClick="arcTgClick"
-          @logClick="logClick"
-          @lnClick="lnClick"
-          @factorialClick="factorialClick"
-          @powClick="powClick"
-          @reverseClick="reverseClick"
-          @sqrClick="sqrClick"
-          @sqrtClick="sqrtClick"
-          @divideClick="divideClick" 
-          @sevenClick="sevenClick"
-          @eightClick="eightClick"
-          @nineClick="nineClick"
-          @multiplyClick="multiplyClick"
-          @fourClick="fourClick"
-          @fiveClick="fiveClick"
-          @sixClick="sixClick"
-          @subtractClick="subtractClick"
-          @oneClick="oneClick"
-          @twoClick="twoClick"
-          @threeClick="threeClick"
-          @plusClick="plusClick"
-          @expClick="expClick"
-          @zeroClick="zeroClick"
-          @dotClick="dotClick"
-          @equalClick="equalClick"
-        />
+        <!-- <button @click="mcClick" class="button-memory">MC</button>
+        <button @click="mrClick" class="button-memory">MR</button>
+        <button @click="mplusClick" class="button-memory">M+</button>
+        <button @click="mminusClick" class="button-memory">M-</button>
+        <button @click="percentClick" class="button-basic">%</button>
+        <button @click="ceClick" class="button-basic">CE</button>
+        <button @click="cClick" class="button-basic">C</button>
+        <button @click="symbolClick" class="button-basic button-symbol"><img class="symbol-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVR4nO2YQUoDQRBFn6BrQXBIQBeC4A1c5QoeQG+gC28QD+HOpUs14M6VpzCL5AAhIIoYQXAhtgi1aM0w6Wl7YqWtBw2BqWr606k/NQWGYRiGYfxvuoBTsF6Aa2AnRsQB8KFAhPPWE7BZR0QHeJPkY/6eFnAl57kMTdoGHiTpFD205UyTkOA1YCgJN8AyunCyKlkBbiWwD6yiDzdLyBJwLkHjugWlSciJBLwCu+jFVQnZF5t9B/YiNj8EioC4QmIbEdL5pc0eeTVVJaaQGCc5sZQK2QLu5cFZ5MbrwJ3sMRCLnBXz9U6IZUpISputEpNSxJSQJmy2TExqEd+E+DY7AjZIh18H/R+/Q8yglpBuwzbr30LKm1AhpMwAYsnvrzWvYm8FWrNq+/VrIrUYN68XYllhpxTjsm5Rsmoas2rjs/qwyuZTN6vhw6KMg54XeUDXBnpynoscRqaPsf2hliH2RG4iZZNrGIZhGAYa+AQu6kng3Jtj4AAAAABJRU5ErkJggg==" alt=""></button>
+        <button @click="sinClick" class="button-basic">sin</button>
+        <button @click="cosClick" class="button-basic">cos</button>
+        <button @click="tgClick" class="button-basic">tg</button>
+        <button @click="arcTgClick" class="button-basic">arctg</button>
+        <button @click="logClick" class="button-basic">log</button>
+        <button @click="lnClick" class="button-basic">ln</button>
+        <button @click="factorialClick" class="button-basic">!</button>
+        <button @click="powClick" class="button-basic">xʸ</button>
+        <button @click="reverseClick" class="button-basic">¹/x</button>
+        <button @click="sqrClick" class="button-basic">x²</button>
+        <button @click="sqrtClick" class="button-basic">²√x</button>
+        <button @click="divideClick" class="button-basic button-operation">÷</button>
+        <button @click="sevenClick" class="button-basic">7</button>
+        <button @click="eightClick" class="button-basic">8</button>
+        <button @click="nineClick" class="button-basic">9</button>
+        <button @click="multiplyClick" class="button-basic button-operation">×</button>
+        <button @click="fourClick" class="button-basic">4</button>
+        <button @click="fiveClick" class="button-basic">5</button>
+        <button @click="sixClick" class="button-basic">6</button>
+        <button @click="subtractClick" class="button-basic button-operation">-</button>
+        <button @click="oneClick" class="button-basic">1</button>
+        <button @click="twoClick" class="button-basic">2</button>
+        <button @click="threeClick" class="button-basic">3</button>
+        <button @click="plusClick" class="button-basic button-operation">+</button>
+        <button @click="expClick" class="button-basic">eˣ</button>
+        <button @click="zeroClick" class="button-basic">0</button>
+        <button @click="dotClick" class="button-basic">,</button>
+        <button @click="equalClick" class="button-basic button-equal">=</button> -->
+        <buttonImport  :content="'content'" :classButton="'button-basic'"/>
       </div> 
     </div>
   </template>
   
 <script>
     import { VueElement } from 'vue'
-    import ButtonsContainer from './ButtonsContainer.vue'
+    import buttonImport from './button.vue'
     export default {
       components: {
-        ButtonsContainer
+        buttonImport
       },
       data(){
           return {
@@ -60,6 +59,44 @@
           memoryValue: 0.0,
           number1: 0.0,
           number2: 0.0,
+          buttonMassive: [
+                {click:"mcClick", class:"button-memory", content:"MC"},
+                {click:"mrClick", class:"button-memory", content:"MR"},
+                {click:"mplusClick", class:"button-memory", content:"M+"},
+                {click:"mminusClick", class:"button-memory", content:"M-"},
+                {click:"percentClick", class:"button-basic", content:"%"},
+                {click:"ceClick", class:"button-basic", content:"CE"},
+                {click:"cClick", class:"button-basic", content:"C"},
+                {click:"symbolClick", class:"button-basic button-symbol", content:"!@!"},
+                {click:"sinClick", class:"button-basic", content:"sin"},
+                {click:"cosClick", class:"button-basic", content:"cos"},
+                {click:"tgClick", class:"button-basic", content:"tg"},
+                {click:"arcTgClick", class:"button-basic", content:"arctg"},
+                {click:"logClick", class:"button-basic", content:"log"},
+                {click:"lnClick", class:"button-basic", content:"ln"},
+                {click:"factorialClick", class:"button-basic", content:"!"},
+                {click:"powClick", class:"button-basic", content:"xʸ"},
+                {click:"reverseClick", class:"button-basic", content:"¹/x"},
+                {click:"sqrClick", class:"button-basic", content:"x²"},
+                {click:"sqrtClick", class:"button-basic", content:"²√x"},
+                {click:"divideClick", class:"button-basic button-operation", content:"÷"},
+                {click:"sevenClick", class:"button-basic", content:"7"},
+                {click:"eightClick", class:"button-basic", content:"8"},
+                {click:"nineClick", class:"button-basic", content:"9"},
+                {click:"multiplyClick", class:"button-basic button-operation", content:"×"},
+                {click:"fourClick", class:"button-basic", content:"4"},
+                {click:"fiveClick", class:"button-basic", content:"5"},
+                {click:"sixCLick", class:"button-basic", content:"6"},
+                {click:"subtractClick", class:"button-basic button-operation", content:"-"},
+                {click:"oneClick", class:"button-basic", content:"1"},
+                {click:"twoClick", class:"button-basic", content:"2"},
+                {click:"threeClick", class:"button-basic", content:"3"},
+                {click:"plusClick", class:"button-basic button-operation", content:"+"},
+                {click:"expClick", class:"button-basic", content:"eˣ"},
+                {click:"zeroClick", class:"button-basic", content:"0"},
+                {click:"dotClick", class:"button-basic", content:","},
+                {click:"equalClick", class:"button-basic button-equal", content:"="},
+            ]
           }
       },
 
@@ -388,5 +425,4 @@
       user-select: none;
       align-items: center;
     }
-    
 </style>
