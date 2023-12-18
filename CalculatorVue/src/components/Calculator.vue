@@ -5,7 +5,7 @@
       </div>
       <div class="line"></div>
       <div class="buttons">
-        <buttonImport  v-for="button in buttonMassive" :key="button.content" :class-button="button.class" :content="button.content" @buttonClick="handleButtonCkick" :click="button.click"/>
+        <buttonImport  v-for="button in buttonMassive" :key="button.content" :class-button="button.class" :content="button.content" @click="bindButtonClick(button.click)"/>
       </div> 
     </div>
   </template>
@@ -24,14 +24,14 @@ import buttonImport from './button.vue'
           number1: 0.0,
           number2: 0.0,
           buttonMassive: [
-            {click:"mcClick", class:"button-basic button-memory", content:"MC"},
-            {click:"mrClick", class:"button-basic button-memory", content:"MR"},
-            {click:"mplusClick", class:"button-basic button-memory", content:"M+"},
-            {click:"mminusClick", class:"button-basic button-memory", content:"M-"},
+            {click:"mcClick", class:"button-memory", content:"MC"},
+            {click:"mrClick", class:"button-memory", content:"MR"},
+            {click:"mplusClick", class:"button-memory", content:"M+"},
+            {click:"mminusClick", class:"button-memory ", content:"M-"},
             {click:"percentClick", class:"button-basic", content:"%"},
             {click:"ceClick", class:"button-basic", content:"CE"},
             {click:"cClick", class:"button-basic", content:"C"},
-            {click:"symbolClick", class:"button-basic button-symbol", content:"!@!"},
+            {click:"symbolClick", class:"button-basic", content:"←"},
             {click:"sinClick", class:"button-basic", content:"sin"},
             {click:"cosClick", class:"button-basic", content:"cos"},
             {click:"tgClick", class:"button-basic", content:"tg"},
@@ -69,6 +69,11 @@ import buttonImport from './button.vue'
       },
 
       methods: {
+        bindButtonClick(clickFunction) {
+          if (typeof this[clickFunction] === "function") {
+          this[clickFunction]()
+          }
+        },
         zeroClick() {
             if(!this.result.startsWith('0')) {
               this.result += '0'
