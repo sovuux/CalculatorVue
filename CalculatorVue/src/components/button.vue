@@ -1,19 +1,23 @@
 <template>
-    <button :class="classButton">
+    <button :class="classButton" @click="$emit('buttonClick')">
         {{ content }}
     </button>
 </template>
 
 <script>
-    import { VueElement } from "vue"
     export default {
         props: {
-            content: {
-                type: String
-            },
-
             classButton: {
-                type: String
+                type: String,
+                required: true
+            },
+            content: {
+                type: String,
+                required: true
+            },
+            click: {
+                type: Function,
+                required: true
             }
         },
     }
@@ -23,21 +27,10 @@
     .button-memory {
       background-color: rgb(134, 134, 134);
       border: 0.5px solid rgb(158, 157, 157);
-      border-radius: 10px;
-      padding: 10px;
-      margin: 1px;
-      font-size: 16px;
-      width: 65px;
-      height: 50px;
-      -webkit-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.45) inset;
-      -moz-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.45) inset;
-      box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.45) inset;
     }
   
     .button-memory:hover {
       background-color:  rgb(187, 187, 187);
-      color: black;
-      cursor: pointer;
     }
   
     .button-basic {
