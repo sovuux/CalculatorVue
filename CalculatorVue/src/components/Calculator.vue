@@ -29,8 +29,8 @@ export default {
       number1: 0.0,
       number2: 0.0,
       buttonMassive: [
-        { click: "mcClick", class: "button-basic button-memory", content: "MC" },
-        { click: "mrClick", class: "button-basic button-memory", content: "MR" },
+        { click: "mcClick", class: "button-basic button-memory-not-active", content: "MC" },
+        { click: "mrClick", class: "button-basic button-memory-not-active", content: "MR" },
         { click: "mplusClick", class: "button-basic button-memory", content: "M+" },
         { click: "mminusClick", class: "button-basic button-memory ", content: "M-" },
         { click: "percentClick", class: "button-basic", content: "%" },
@@ -181,6 +181,7 @@ export default {
 
     mcClick() {
       this.memoryValue = 0.0;
+      this.memoryNonActive();
     },
 
     mrClick() {
@@ -194,10 +195,30 @@ export default {
 
     mplusClick() {
       this.memoryValue += parseFloat(this.result);
+      if (this.memoryValue !== 0) {
+        this.memoryActive();
+      }
     },
 
     mminusClick() {
       this.memoryValue -= parseFloat(this.result);
+      if (this.memoryValue !== 0) {
+        this.memoryActive();
+      }
+    },
+
+    memoryActive() {
+      const mcButton = this.buttonMassive.find(button => button.click === "mcClick");
+      const mrButton = this.buttonMassive.find(button => button.click === "mrClick");
+      mcButton.class = "button-basic button-memory";
+      mrButton.class = "button-basic button-memory";
+    },
+
+    memoryNonActive() {
+      const mcButton = this.buttonMassive.find(button => button.click === "mcClick");
+      const mrButton = this.buttonMassive.find(button => button.click === "mrClick");
+      mcButton.class = "button-basic button-memory-not-active";
+      mrButton.class = "button-basic button-memory-not-active";
     },
 
     percentClick() {

@@ -53,6 +53,19 @@ export default {
         background-color:  rgb(187, 187, 187);
     }
 
+    .button-memory-not-active {
+        background-color: rgb(216, 216, 216);
+        border: 0.5px solid rgb(158, 157, 157);
+        color: #a7a7a7;
+        cursor: default;
+    }
+
+    .button-memory-not-active:hover {
+      background-color: rgb(216, 216, 216);
+      color: #a7a7a7;
+      cursor: default;
+    }
+
     .button-operation {
         background-color: orange;
         border: 0.5px solid rgb(158, 157, 157);
