@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import buttonImport from "./button.vue";
+import ButtonImport from "./button.vue";
 export default {
   components: {
-    buttonImport
+    ButtonImport
   },
   data() {
     return {
