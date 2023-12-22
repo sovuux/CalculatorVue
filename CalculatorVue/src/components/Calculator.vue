@@ -55,7 +55,7 @@ export default {
         { click: "multiplyClick", class: "button-basic button-operation", content: "×" },
         { click: "fourClick", class: "button-basic", content: "4" },
         { click: "fiveClick", class: "button-basic", content: "5" },
-        { click: "sixCLick", class: "button-basic", content: "6" },
+        { click: "sixClick", class: "button-basic", content: "6" },
         { click: "subtractClick", class: "button-basic button-operation", content: "-" },
         { click: "oneClick", class: "button-basic", content: "1" },
         { click: "twoClick", class: "button-basic", content: "2" },
