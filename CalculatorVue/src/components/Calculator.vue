@@ -1,4 +1,3 @@
-<!-- eslint-disable no-useless-escape -->
 <template>
   <div class="calculator-interface">
     <div class="textbox">
